@@ -1,33 +1,427 @@
 .App {
-  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.nav-color {
+  background-color: #FF8A65;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  background-color: #e7e7e7;
+}
+
+.container {
+  width: 100%;
+}
+
+.navbar__container {
+  display: block;
+  background-color: #3f3f4d;
+  padding: 0 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+.navbar__flex {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  min-height: 75px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.navbar__left, .navbar__right {
+  flex: 1 1 50%;
+}
+.navbar__hamburger {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background-size: contain;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.navbar__search {
+  display: inline-block;
+}
+.navbar__inputwithicon {
+  position: relative;
+  width: 300px;
+}
+.navbar__input {
+  background-color: #34343f;
+  border: 1px solid #34343f;
+  width: 100%;
+  height: 36px;
+  border-radius: 18px;
+  outline: none;
+  padding: 0 30px 0 15px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #c0c7da;
+  letter-spacing: .5px;
+  word-spacing: 1px;
+}
+.navbar__input:focus {
+  border-color: white;
+}
+.navbar__button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background: #43cb83 url("https://res.cloudinary.com/ajayrawat/image/upload/v1508734484/search_icon_pr2sma.svg") no-repeat;
+  background-size: 17px;
+  background-position: center;
+  cursor: pointer;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  transition: background-color .2s linear;
+  will-change: background-color;
+}
+.navbar__button:hover, .navbar__button:focus {
+  background-color: #32b46f;
+}
+.navbar__button:active {
+  background-color: #2fac6a;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+.navbar__toggler {
+  display: none;
+}
+.navbar__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+.navbar__links li {
+  position: relative;
+  display: inline-block;
+}
+.navbar__links li:not(:last-child) a {
+  padding: 0 15px;
+}
+.navbar__links li:last-child a {
+  padding: 0 0 0 15px;
+}
+.navbar__links li a {
+  display: block;
+  color: #c0c7da;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+  transition: color 200ms linear;
+  will-change: color;
+}
+.navbar__links li a:hover, .navbar__links li a:hover {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.navbar__hamberger {
+  /*display: none;*/
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background: #3f3f4d url("https://res.cloudinary.com/ajayrawat/image/upload/v1508734484/hamburger_icon_o7uviz.svg") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+}
+.navbar__toggler__label {
+  display: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: white;
+  text-align: right;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.navbar__toggler__input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.navbar__sublinks {
+  display: none;
+  position: absolute;
+  width: 175px;
+  height: auto;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background-color: #3f3f4d;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.2);
+}
+.navbar__sublinks li {
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+}
+.navbar__sublinks li:first-child {
+  margin-top: 20px;
+}
+.navbar__sublinks li a {
+  display: block;
+  padding: 5px 15px 15px !important;
+}
+.navbar__links li:hover .navbar__sublinks {
+  display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 870px) {
+  .navbar__flex {
+    display: block;
+    padding: 15px 0;
   }
-  to {
-    transform: rotate(360deg);
+  .navbar__left {
+    margin-bottom: 15px;
   }
+  .navbar__search {
+    display: inline-block;
+    width: calc(100% - 120px);
+  }
+  .navbar__inputwithicon {
+    position: relative;
+    width: 100%;
+  }
+  .navbar__links {
+    float: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .navbar__links li:first-child a {
+    padding-left: 0;
+  }
+}
+@media screen and (max-width: 440px) {
+  .navbar__hamburger {
+    display: block;
+    margin: 0 auto 15px;
+  }
+  .navbar__search {
+    width: 100%;
+  }
+  .navbar__toggler__label {
+    position: relative;
+    display: block;
+  }
+  .navbar__toggler__input {
+    display: block;
+  }
+  .navbar__toggler__input:checked + .navbar__links {
+    display: flex;
+  }
+  .navbar__links {
+    display: none;
+    flex-direction: column;
+  }
+  .navbar__links li a {
+    padding: 10px 10px 10px 0 !important;
+  }
+  .navbar__sublinks {
+    display: block;
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    padding-left: 15px;
+    background-color: #34343f;
+  }
+  .navbar__sublinks li:first-child {
+    margin-top: 0;
+  }
+}
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  color: #444;
+  font: 16px/1.5 'Nunito Sans', sans-serif;
+}
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+
+h1 {
+  position: relative;
+  line-height: 2;
+  margin: 1em 0;
+}
+h1:after {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 4px;
+  width: 80px;
+  background: #08f;
+}
+
+h3 {
+  color: #111;
+  margin-top: 0;
+  line-height: 2;
+  margin-bottom: .5rem;
+}
+h3:after {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 2px;
+  width: 40px;
+  background: #08f;
+}
+
+p {
+  margin: .5rem 0;
+}
+
+.card-container {
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.8rem;
+}
+
+.card {
+  width: calc(33.3% - 1.6rem);
+  margin: 0.8rem;
+  background: #fff;
+  overflow: hidden;
+  border-radius: .25rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05), 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 300ms;
+}
+@media screen and (max-width: 800px) {
+  .card {
+    display: flex;
+    width: calc(100% - 1.6rem);
+  }
+}
+.card:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.card--image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%;
+  overflow: hidden;
+}
+@media screen and (max-width: 800px) {
+  .card--image {
+    width: 25%;
+    min-width: 25%;
+    padding-bottom: 25%;
+  }
+}
+.card--image img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 800px) {
+  .card--image img {
+    height: 100%;
+    width: auto;
+  }
+}
+.card--content {
+  padding: 0 1.5rem;
+}
+.card--category {
+  font-size: .8em;
+  letter-spacing: .1ch;
+  padding-top: 1em;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+}
+
+*,:after,:before{box-sizing:border-box}
+.pull-left{float:left}
+.pull-right{float:right}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+
+.switch-title{
+	color:#eee;
+	font-size:15px;
+  text-align:center;
+  margin-top: 10px;
+  margin-right:  5px
+}
+
+.switch-wrap{
+  text-align:center;
+  display: flex;
+  flex-direction: row
+}
+
+.switch{
+	display:none;
+}
+.switch + label{
+	width:70px;
+	height:35px;
+	position:relative;
+	background:#212121;
+	border-radius:35px;
+	display:inline-block;
+	border:3px solid #fff;
+	transition:all .4s ease-in-out 0s;
+}
+.switch + label:before{
+	top:50%;
+	content:'';
+	right:38px;
+	width:23px;
+	height:23px;
+	background:#fff;
+	border-radius:50%;
+	position:absolute;
+	margin-top:-11.5px;
+	transition:inherit;
+}
+.switch:checked + label{
+	background:#212121;
+	border-color:#212121;
+	box-shadow:0 1px 1px rgba(206,206,206,.5);
+}
+.switch:checked + label:before{
+	right:3px;
+	background:#cecece;
+	border-color:transparent;
+	box-shadow:0 3px 3px #000;
 }
