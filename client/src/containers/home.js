@@ -9,7 +9,6 @@ import Spinner from '../components/spinner'
 import 'react-toastify/dist/ReactToastify.css';
 
 const Home = props => {
-  console.log(props);
   const [searchData, updateSearchData] = useState({
     term: null,
     location: 'san francisco, ca',

@@ -4,6 +4,7 @@
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "nodemon": "^1.18.10",
     "yelp-fusion": "^2.2.1"
   },
   "scripts": {

@@ -6,12 +6,16 @@ export default props => {
   return (
     <div className="card">
       <div className="card--image">
-        <img src={restaurant.image_url}/>
+        <a href={restaurant.url}>
+          <img
+            src={restaurant.image_url}
+          />
+        </a>
       </div>
       <div className="card--content">
         <div className="card--category">{restaurant.is_closed ? 'Closed' : 'Open'}</div>
-        <h3>{restaurant.alias}</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab incidunt aliquam cumque accusantium.</p>
+        <h3>{restaurant.name}</h3>
+        <p>{restaurant.alias}</p>
       </div>
       <StarRatings 
         rating={restaurant.rating}
