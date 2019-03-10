@@ -7,9 +7,8 @@ export const searchRestaurants = ({ term, location }) => {
       const response = await axios.get(`/search?term=${term}&location=${location}`)
       dispatch({
         type: SEARCH,
-        user: response.data
+        data: response.data.data
       })
-      console.log(response.data)
       return response.data;
     } catch (error) {
       console.log(error)

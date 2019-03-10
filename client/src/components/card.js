@@ -1,16 +1,23 @@
 import React from 'react'
+import StarRatings from 'react-star-ratings';
 
 export default props => {
+  const { restaurant } = props;
   return (
     <div className="card">
       <div className="card--image">
-        <img src="https://source.unsplash.com/500x301"/>
+        <img src={restaurant.image_url}/>
       </div>
       <div className="card--content">
-        <div className="card--category">Category</div>
-        <h3>Card 1 Title</h3>
+        <div className="card--category">{restaurant.is_closed ? 'Closed' : 'Open'}</div>
+        <h3>{restaurant.alias}</h3>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab incidunt aliquam cumque accusantium.</p>
       </div>
+      <StarRatings 
+        rating={restaurant.rating}
+        starDimension="20px"
+        starSpacing="5px"
+      />
     </div>
   )
 }
