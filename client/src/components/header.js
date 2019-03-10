@@ -1,14 +1,23 @@
 import React from 'react';
 
-export default () => (
+const Header = props => (
   <nav>
     <div className="container navbar__container">
       <nav className="navbar__flex">
         <div className="navbar__left">
           <form className="navbar__search">
             <div className="navbar__inputwithicon">
-              <input type="text" name="" className="navbar__input" placeholder="Search my site..."/>
-              <input type="submit" name="" className="navbar__button" value=""/>
+              <input 
+                type="text" 
+                name="term"
+                className="navbar__input" 
+                placeholder="Search for restaurants..."
+                onChange={e => props.onChangeTerm(e)}
+              />
+              <button
+                className="navbar__button"
+                onClick={(e) => props.onSearch(e)}
+              />
             </div>
           </form>
         </div>
@@ -27,3 +36,5 @@ export default () => (
     </div>
   </nav>
 );
+
+export default Header;
