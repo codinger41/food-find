@@ -9,7 +9,7 @@ const Header = props => (
           <form className="navbar__search">
             <div className="navbar__inputwithicon">
               <input 
-                type="text" 
+                type="text"
                 name="term"
                 className="navbar__input" 
                 placeholder="Enter Location. eg 'san francisco'"
@@ -31,6 +31,12 @@ const Header = props => (
               />
             </div>
           </form>
+          <button 
+            className="btn orange"
+            onClick={() => props.onPressButton()}
+          >
+            Use my location
+          </button>
         </div>
       </nav>
     </div>

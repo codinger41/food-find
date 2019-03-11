@@ -12,11 +12,22 @@ import 'react-toastify/dist/ReactToastify.css';
 const Home = props => {
   const [searchData, updateSearchData] = useState({
     term: null,
-    location: null
+    location: null,
+    longitude: null,
+    latitude: null
   });
   const [loading, setLoading] = useState(false);
   const updateKeyword = e => updateSearchData({ ...searchData, term: e.target.value });
   const updateLocation = e => updateSearchData({ ...searchData, location: e.target.value });
+
+  const updateCoordsForSearch = () => {
+    updateSearchData({
+      ...searchData,
+      longitude: props.position.lng,
+      latitude: props.position.lat
+    });
+  }
+
   const search = async e => {
     e.preventDefault();
     setLoading(true);
@@ -41,6 +52,7 @@ const Home = props => {
         onChangeTerm={updateKeyword}
         onChangeLocation={updateLocation}
         onSearch={search}
+        onPressButton={updateCoordsForSearch}
       />
       {
         loading ? <Spinner loading={loading} /> : 
@@ -64,7 +76,8 @@ const Home = props => {
 
 const mapStateToProps = state => {
   return {
-    restaurants: state.restaurantsReducer.restaurants
+    restaurants: state.restaurantsReducer.restaurants,
+    position: state.locationReducer.mapCenter
   };
 };
 

@@ -19,7 +19,6 @@ const Marker = ({ text, color, link }) => (
       transform: 'translate(-50%, -50%)',
       cursor: 'pointer'
     }}
-    
   >
     {text}
   </a>
@@ -36,7 +35,7 @@ const Map = (props) => {
         yesIWantToUseGoogleMapApiInternals
       >
         {
-          props.restaurants.map((restaurant, index) => (
+          Array.isArray(props.restaurants) && props.restaurants.map((restaurant, index) => (
             <Marker
               key={index}
               lat={restaurant.coordinates.latitude}
