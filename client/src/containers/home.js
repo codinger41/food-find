@@ -37,10 +37,11 @@ const Home = props => {
     const { success, data } = res;
     if (success) {
       props.successToast(`${res.data.length} results found.`);
-      props.setUserLocation({
-        lat: data[0].coordinates.latitude,
-        lng: data[0].coordinates.longitude
-      });
+      if (data[0])
+        props.setUserLocation({
+          lat: data[0].coordinates.latitude,
+          lng: data[0].coordinates.longitude
+        });
     } else {
       props.failureToast(res.message);
     }

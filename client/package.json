@@ -10,6 +10,7 @@
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.8",
     "react-star-ratings": "^2.3.0",
+    "react-switch": "^4.1.0",
     "react-toastify": "^4.5.2",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
