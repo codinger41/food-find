@@ -8,6 +8,7 @@ import Header from "../components/header";
 import Card from "../components/card";
 import Spinner from "../components/spinner";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "../components/modal";
 
 const Home = props => {
   const [searchData, updateSearchData] = useState({
@@ -57,6 +58,7 @@ const Home = props => {
         onSearch={search}
         onPressButton={updateCoordsForSearch}
       />
+      <Modal />
       {loading ? (
         <Spinner loading={loading} />
       ) : (

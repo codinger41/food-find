@@ -6,6 +6,7 @@ import { setUserLocation } from '../actions/location';
 const Marker = ({ text, color, link }) => (
   <a
     href={link? link : '#'}
+    rel="noopener noreferrer"
     target='_blank'
     style={{
       color: 'white', 
