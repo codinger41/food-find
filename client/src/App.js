@@ -15,19 +15,22 @@ const store = createStore(
   )
 );
 
-const App = () => {
-  const [userLocation, setLocation] = useState({ lat: 59.95, lng: 30.33 });
-  navigator.geolocation.getCurrentPosition((position) => {
-    setLocation({
+navigator.geolocation.getCurrentPosition((position) => {
+  store.dispatch({
+    type: 'MAP_CENTER',
+    data: {
       lng: position.coords.longitude,
       lat: position.coords.latitude
-    });
-  });
+    }
+  })
+});
+
+const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <Home location={userLocation} />
-        <Maps location={userLocation}/>
+        <Home />
+        <Maps />
       </div>
     </Provider>
   );

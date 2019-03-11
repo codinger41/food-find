@@ -1,10 +1,10 @@
 
-import { USER_LOCATION } from './actionTypes';
+import { MAP_CENTER } from './actionTypes';
 
 export const setUserLocation = (position) => {
   return (dispatch) => {
     dispatch({
-      type: USER_LOCATION,
+      type: MAP_CENTER,
       data: position
     });
   };

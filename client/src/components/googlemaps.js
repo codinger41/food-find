@@ -1,41 +1,49 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import GoogleMapReact from 'google-map-react';
+import { setUserLocation } from '../actions/location';
 
-const Marker = ({ text }) => (
-  <div style={{
-    color: 'white', 
-    background: 'red',
-    padding: '15px 10px',
-    display: 'inline-flex',
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '100%',
-    transform: 'translate(-50%, -50%)',
-    cursor: 'pointer'
-  }}>
+const Marker = ({ text, color, link }) => (
+  <a
+    href={link? link : '#'}
+    target='_blank'
+    style={{
+      color: 'white', 
+      background: color,
+      padding: '15px 10px',
+      display: 'inline-flex',
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '100%',
+      transform: 'translate(-50%, -50%)',
+      cursor: 'pointer'
+    }}
+    
+  >
     {text}
-  </div>
+  </a>
 );
 
 
 const Map = (props) => {
-  const userLocation = props.location;
   return (
     <div className="map">
       <GoogleMapReact
         bootstrapURLKeys={{ key:'AIzaSyC9b7EHAocHuWxDDba2rEVMKlnJl2W_DVE'}}
-        center={userLocation}
+        center={props.position}
         zoom={11}
         yesIWantToUseGoogleMapApiInternals
       >
         {
-          props.restaurants.map(restaurant => (
+          props.restaurants.map((restaurant, index) => (
             <Marker
+              key={index}
               lat={restaurant.coordinates.latitude}
               lng={restaurant.coordinates.longitude}
               text={restaurant.name}
+              color='red'
+              link={restaurant.url}
             />
           ))
         }
@@ -47,7 +55,8 @@ const Map = (props) => {
 
 const mapStateToProps = state => {
   return {
-    restaurants: state.restaurantsReducer.restaurants
+    restaurants: state.restaurantsReducer.restaurants,
+    position: state.locationReducer.mapCenter
   };
 };
 
