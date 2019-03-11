@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../actions/modal';
+import { setSearchLocation } from '../actions/location';
 
 const Header = props => {
   return (
@@ -9,16 +10,6 @@ const Header = props => {
         <nav className="navbar__flex">
           <div className="navbar__left">
             <form className="navbar__search">
-              <div className="navbar__inputwithicon">
-                <input 
-                  type="text"
-                  name="term"
-                  className="navbar__input" 
-                  placeholder="Enter Location. eg 'san francisco'"
-                  onChange={e => props.onChangeLocation(e)}
-                />
-              </div>
-              <br></br>
               <div className="navbar__inputwithicon">
                 <input 
                   type="text"
@@ -35,14 +26,14 @@ const Header = props => {
             </form>
             <button 
               className="btn orange"
-              onClick={() => props.onPressButton()}
+              onClick={() => props.setSearchLocation()}
             >
               Use my location
             </button>
             <div className="switch-container">
-              <p className="showmap" >show on map</p>
+              <p className="showmap">show on map</p>
               <label className="switch">
-                <input 
+                <input
                   type="checkbox"
                   onChange={(e) =>  props.openModal()}
                 />
@@ -57,4 +48,4 @@ const Header = props => {
 
 }
 
-export default connect(() => {}, { openModal })(Header);
+export default connect(() => {}, { openModal, setSearchLocation })(Header);

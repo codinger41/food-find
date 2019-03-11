@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import GoogleMapReact from 'google-map-react';
-import { setUserLocation } from '../actions/location';
+import { setUserLocation, setSearchLocation } from '../actions/location';
 
 const Marker = ({ text, color, link }) => (
   <a
@@ -27,6 +27,14 @@ const Marker = ({ text, color, link }) => (
 
 
 const Map = (props) => {
+  const updateSearchLocation = async e => {
+    props.setSearchLocation({
+      lng: e.lng,
+      lat: e.lat
+    });
+    return props.search();
+  }
+
   return (
     <div className="map">
       <GoogleMapReact
@@ -34,6 +42,7 @@ const Map = (props) => {
         center={props.position}
         zoom={11}
         yesIWantToUseGoogleMapApiInternals
+        onClick={updateSearchLocation}
       >
         {
           Array.isArray(props.restaurants) && props.restaurants.map((restaurant, index) => (
@@ -60,4 +69,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(() => mapStateToProps, {})(Map);
+export default connect(() => mapStateToProps, { setSearchLocation })(Map);
