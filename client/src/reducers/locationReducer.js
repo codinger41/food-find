@@ -1,13 +1,13 @@
-import { SEARCH } from '../actions/actionTypes';
+import { MAP_CENTER } from '../actions/actionTypes';
 
 const initialState = {
-  restaurants: []
+  mapCenter: {  }
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SEARCH:
-      return { restaurants: action.data };
+    case MAP_CENTER:
+      return { mapCenter: action.data };
     default: return state;
   }
 };
