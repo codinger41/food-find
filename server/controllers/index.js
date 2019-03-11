@@ -5,10 +5,18 @@ const client = yelp.client(process.env.YELP_API_KEY);
 
 
 exports.search = (req, res) => {
-  const { query: { term, location } } = req;
+  const { query: { term, location, longitude, latitude } } = req;
+  const searchLocation = {};
+  if (location !== 'undefined') {
+    searchLocation.location = location;
+  } else {
+    searchLocation.latitude = Number(latitude);
+    searchLocation.longitude = Number(longitude);
+  }
+  console.log(searchLocation)
   client.search({
     term,
-    location
+    ...searchLocation
   }).then(response => {
     return res.json({
       data: response.jsonBody.businesses,
