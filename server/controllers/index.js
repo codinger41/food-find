@@ -5,9 +5,8 @@ const client = yelp.client(process.env.YELP_API_KEY);
 
 
 exports.search = (req, res) => {
-  const { query: { term, longitude, latitude } } = req;
+  const { query: { longitude, latitude } } = req;
   client.search({
-    term,
     longitude,
     latitude
   }).then(response => {

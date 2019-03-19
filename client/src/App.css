@@ -449,3 +449,8 @@ border-radius: 50em !important;
 .orange {
   background-color: #e96633;
 }
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 2;
+}

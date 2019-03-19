@@ -8,6 +8,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-modal": "^3.8.1",
+    "react-places-autocomplete": "^7.2.1",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.8",
     "react-star-ratings": "^2.3.0",

@@ -3,15 +3,24 @@ import { MAP_CENTER, SEARCH_LOCATION } from './actionTypes';
 
 export const setUserLocation = (position) => {
   return (dispatch) => {
-    navigator.geolocation.getCurrentPosition((position) => {
+    if(!position) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        dispatch({
+          type: MAP_CENTER,
+          data: {
+            lng: pos.coords.longitude,
+            lat: pos.coords.latitude
+          }
+        })
+      });
+    } else {
       dispatch({
         type: MAP_CENTER,
         data: {
-          lng: position.coords.longitude,
-          lat: position.coords.latitude
+          ...position
         }
       })
-    });
+    }
   };
 };
 

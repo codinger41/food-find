@@ -9,7 +9,7 @@ const Marker = ({ text, color, link }) => (
     rel="noopener noreferrer"
     target='_blank'
     style={{
-      color: 'white', 
+      color: 'white',
       background: color,
       padding: '15px 10px',
       display: 'inline-flex',
@@ -27,22 +27,13 @@ const Marker = ({ text, color, link }) => (
 
 
 const Map = (props) => {
-  const updateSearchLocation = async e => {
-    props.setSearchLocation({
-      lng: e.lng,
-      lat: e.lat
-    });
-    return props.search();
-  }
-
   return (
     <div className="map">
       <GoogleMapReact
-        bootstrapURLKeys={{ key:'AIzaSyC9b7EHAocHuWxDDba2rEVMKlnJl2W_DVE' }}
+        bootstrapURLKeys={{ key:'AIzaSyDAQOhuvUriLPgDzVblnSSH7BUj-s2EMSw' }}
         center={props.position}
         zoom={11}
         yesIWantToUseGoogleMapApiInternals
-        onClick={updateSearchLocation}
       >
         {
           Array.isArray(props.restaurants) && props.restaurants.map((restaurant, index) => (
