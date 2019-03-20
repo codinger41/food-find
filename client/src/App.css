@@ -454,3 +454,8 @@ border-radius: 50em !important;
   position: absolute;
   z-index: 2;
 }
+
+.markerImg {
+  height: 50px;
+  width: 50px;
+}
